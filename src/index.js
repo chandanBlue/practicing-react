@@ -6,13 +6,14 @@ import "./index.css";
 // import MyApi from "./FetchApi";
 // import ContactFormComponent from "./ContactForm";
 // import App2 from "./App2";
-import FetchApi from "./FetchApi";
+// import FetchApi from "./FetchApi";
+import FetchApi2 from "./FetchApi2";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FetchApi />
+    <FetchApi2 />
   </React.StrictMode>
 );
 
