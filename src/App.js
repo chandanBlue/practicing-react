@@ -1,73 +1,90 @@
 import React, { useState } from "react";
-
+import FetchApi from "./FetchApi";
+import FetchApi2 from "./FetchApi2";
 import "./style.css";
 
-function App() {
-  // React States
+//
+function Login() {
+  // Create useState
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [userName, setUserName] = useState({});
+  const [userPass, setUserPass] = useState({});
 
-  // User Login info
-  const database = [
+  const dataBase = [
     {
       username: "user1",
-      password: "pass1",
+      pass: "user123",
     },
     {
       username: "user2",
-      password: "pass2",
+      pass: "user234",
+    },
+    {
+      username: "user3",
+      pass: "user345",
     },
   ];
 
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password",
-  };
+  // Define error data
+  const errors = { uname: "User doesn't exist !", pass: "Password is wrong !" };
 
   const handleSubmit = (event) => {
-    //Prevent page reload
     event.preventDefault();
 
+    // Data from the form
     var { uname, pass } = document.forms[0];
 
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+    //Printing data from form to console
+    console.log("Username \t" + uname.value + "\nPassword\t" + pass.value);
+    // console.log(uname, pass, document.forms[0]);
 
-    // Compare user info
+    //Find user in database
+    const userData = dataBase.find((user) => user.username === uname.value);
+
+    // Compare the data || From database and the entered data by the user
+
     if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
+      if (userData.pass !== pass.value) {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
+        setUserName(uname.value);
+        setUserPass(pass.value);
         setIsSubmitted(true);
       }
     } else {
-      // Username not found
       setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
+  console.log(errorMessages);
 
-  // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
+  // Generate JSX code to handle the error message
+  const renderErrorMessage = (name) => {
+    if (name === errorMessages.name) {
+      return <div>{errorMessages.message}</div>;
+    }
+  };
 
-  // JSX code for login form
+  // login Form JSX
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
+          <label>Username</label>
+          <input type="text" name="uname" className="userNameInput" required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
+          <label>Password</label>
+          <input
+            type="password"
+            name="pass"
+            className="userPassInput"
+            required
+          />
           {renderErrorMessage("pass")}
         </div>
-        <div className="button-container">
+        <div>
           <input type="submit" />
         </div>
       </form>
@@ -75,13 +92,24 @@ function App() {
   );
 
   return (
-    <div className="app">
-      <div className="login-form">
-        <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+    <>
+      <div>
+        <FetchApi />
+        {/* <FetchApi2 /> */}
       </div>
-    </div>
+      <div>
+        {isSubmitted ? (
+          <div>
+            User successfully logged in and your username is {userName} and
+            password is {userPass}
+          </div>
+        ) : (
+          renderForm
+        )}
+      </div>
+    </>
   );
+  //
 }
 
-export default App;
+export default Login;

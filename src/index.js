@@ -1,19 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-// import App from "./App";
-// import Login from "./Login";
-// import MyApi from "./FetchApi";
-// import ContactFormComponent from "./ContactForm";
-// import App2 from "./App2";
-// import FetchApi from "./FetchApi";
-import FetchApi2 from "./FetchApi2";
+import App from "./App";
+import FetchApi from "./FetchApi2";
+import EventHandle from "./EventHandle";
+
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FetchApi2 />
+    <EventHandle />
   </React.StrictMode>
 );
 
