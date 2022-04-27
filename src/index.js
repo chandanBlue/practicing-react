@@ -2,18 +2,28 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 // import App from "./App";
-// import FetchApi from "./FetchApi2";
+import FetchApi from "./FetchApi";
+// import FetchApi2 from "./FetchApi2";
 // import EventHandle from "./EventHandle";
+// import ParentFile from "./ParentFile";
+// import ExampleUseEffect from "./UseEffectExample";
+// import FetchApiAsyncAwait from "./FetchApiAsyncAwait";
+import LoginForm from "./LoginForm";
+import File1 from "./F1";
+import Child from "./Child";
 import ParentFile from "./ParentFile";
-import ExampleUseEffect from "./UseEffectExample";
+import Table from "./table";
 
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ExampleUseEffect />
-    <ParentFile />
+    <LoginForm />
+    {/* <FetchApi /> */}
+    {/* <FetchApi2 /> */}
+    {/* <Table /> */}
+    {/* <ParentFile /> */}
   </React.StrictMode>
 );
 

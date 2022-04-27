@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FetchApi from "./FetchApi";
-import FetchApi2 from "./FetchApi2";
+// import FetchApi2 from "./FetchApi2";
 import "./style.css";
 
 //

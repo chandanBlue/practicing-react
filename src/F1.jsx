@@ -3,7 +3,7 @@ import React from "react";
 function File1(props) {
   return (
     <>
-      <div>Hi i am file {props.data}</div>
+      <div>Data coming from parent to child is {props.childVar}</div>
     </>
   );
 }
